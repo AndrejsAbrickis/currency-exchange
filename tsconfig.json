@@ -14,5 +14,6 @@
     "paths": { "src/*": ["src/*"] },
     "types": ["@types/node", "@types/jest"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/core/EnvImportMeta.mjs"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["src/**/*spec.ts"]
 }
