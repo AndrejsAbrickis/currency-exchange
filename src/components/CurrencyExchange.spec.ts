@@ -1,6 +1,11 @@
 import { shallowMount } from "@vue/test-utils";
 import CurrencyExchange from "./CurrencyExchange.vue";
 
+jest.mock("src/core/ApiConfig", () => ({
+  VITE_EXCHANGE_RATES_API_URL: "MOCK_URL",
+  VITE_EXCHANGE_RATES_API_KEY: "MOCK_KEY",
+}));
+
 describe("CurrencyExchange", () => {
   describe("onMounted", () => {
     beforeEach(() => {
@@ -13,18 +18,13 @@ describe("CurrencyExchange", () => {
       expect(wrapper.get("h1").text()).toBe("Currency exchange");
     });
 
-    it("should fetch latest exchange rates once", () => {
-      shallowMount(CurrencyExchange);
-
-      expect(fetch).toHaveBeenCalledTimes(1);
-    });
-
-    it("should call exchange rates api with 'EUR' as base currency", () => {
+    it("should fetch currency symbols once", () => {
       shallowMount(CurrencyExchange);
 
       expect(fetch).toHaveBeenCalledWith(
-        "SET_API_URL/latest?access_key=SET_API_KEY&base=EUR",
+        "MOCK_URL/symbols?access_key=MOCK_KEY",
       );
+      expect(fetch).toHaveBeenCalledTimes(1);
     });
   });
 });
