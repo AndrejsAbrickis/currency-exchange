@@ -1,0 +1,7 @@
+const envVariables = {
+  VITE_EXCHANGE_RATES_API_URL: "SET_API_URL",
+  VITE_EXCHANGE_RATES_API_KEY: "SET_API_KEY",
+};
+
+export const { VITE_EXCHANGE_RATES_API_URL, VITE_EXCHANGE_RATES_API_KEY } =
+  envVariables;
